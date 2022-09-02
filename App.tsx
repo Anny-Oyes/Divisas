@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { View } from 'react-native';
+import Conversor from './Components/Conversor';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+export default function Divisas() {
+return (
+  <View style={styles.container}>
+    <Conversor/>
+  </View>
+)
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#9dbad5',
     alignItems: 'center',
     justifyContent: 'center',
   },
 });
+
