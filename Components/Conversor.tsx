@@ -10,6 +10,12 @@ export default function Conversor() {
     exchangeRate: "1 NIO = 0. 028 USD",
     resultados: 0,
     Monto: 0,
+    CordobaADolar: 0.02757,
+    DolarACordoba: 36,
+    PesoMexicanoACordoba: 1.8,
+    CordobaAPesoMexicano: 0.56,
+    DolarAPesoMexicano: 19.99,
+    PesoMexicanoADolares: 0.05,
   });
 
   const handlerForm = (text: string, input: string) => {
@@ -21,15 +27,6 @@ export default function Conversor() {
 
   const calcular = () => {
 
-    const costoDeMoneda = {
-      CordobaADolar: 0.02757,
-      DolarACordoba: 36,
-      PesoMexicanoACordoba: 1.8,
-      CordobaAPesoMexicano: 0.56,
-      DolarAPesoMexicano: 19.99,
-      PesoMexicanoADolares: 0.05,
-    };
-
     if (isNaN(Form.Monto)) {
       alert("Ingresa un número, para continuar");
       setForm({
@@ -39,50 +36,50 @@ export default function Conversor() {
 
     } else {
       if (Form.nacional === "NIO" && Form.fareign === "USD") {
-        const resultados = Form.Monto * costoDeMoneda.CordobaADolar;
+        const resultados = Form.Monto * Form.CordobaADolar;
         setForm({
           ...Form,
-          exchangeRate: `1 NIO = ${costoDeMoneda.CordobaADolar} USD`,
+          exchangeRate: `1 NIO = ${Form.CordobaADolar} USD`,
           resultados,
         });
 
       } else if (Form.nacional === "USD" && Form.fareign === "NIO") {
-        const resultados = Form.Monto * costoDeMoneda.DolarACordoba;
+        const resultados = Form.Monto * Form.DolarACordoba;
         setForm({
           ...Form,
-          exchangeRate: `1 USD = ${costoDeMoneda.DolarACordoba} NIO`,
+          exchangeRate: `1 USD = ${Form.DolarACordoba} NIO`,
           resultados,
         });
 
       } else if (Form.nacional === "NIO" && Form.fareign === "MXN$") {
-        const resultados = Form.Monto * costoDeMoneda.CordobaAPesoMexicano;
+        const resultados = Form.Monto * Form.CordobaAPesoMexicano;
         setForm({
           ...Form,
-          exchangeRate: `1 NIO = ${costoDeMoneda.CordobaAPesoMexicano} MXN$`,
+          exchangeRate: `1 NIO = ${Form.CordobaAPesoMexicano} MXN$`,
           resultados,
         });
 
       } else if (Form.nacional === "USD" && Form.fareign === "MXN$") {
-        const resultados = Form.Monto * costoDeMoneda.DolarAPesoMexicano;
+        const resultados = Form.Monto * Form.DolarAPesoMexicano;
         setForm({
           ...Form,
-          exchangeRate: `1 USD = ${costoDeMoneda.DolarAPesoMexicano} MXN$`,
+          exchangeRate: `1 USD = ${Form.DolarAPesoMexicano} MXN$`,
           resultados,
         });
 
       } else if (Form.nacional === "MXN$" && Form.fareign === "USD") {
-        const resultados = Form.Monto * costoDeMoneda.PesoMexicanoADolares;
+        const resultados = Form.Monto * Form.PesoMexicanoADolares;
         setForm({
           ...Form,
-          exchangeRate: `1 MXN$ = ${costoDeMoneda.PesoMexicanoADolares} USD`,
+          exchangeRate: `1 MXN$ = ${Form.PesoMexicanoADolares} USD`,
           resultados,
         });
 
       } else if (Form.nacional === "MXN$" && Form.fareign === "NIO") {
-        const resultados = Form.Monto * costoDeMoneda.PesoMexicanoACordoba;
+        const resultados = Form.Monto * Form.PesoMexicanoACordoba;
         setForm({
           ...Form,
-          exchangeRate: `1 MXN$ = ${costoDeMoneda.PesoMexicanoACordoba} NIO`,
+          exchangeRate: `1 MXN$ = ${Form.PesoMexicanoACordoba} NIO`,
           resultados,
         });
       }
