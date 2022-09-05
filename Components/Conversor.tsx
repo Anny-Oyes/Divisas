@@ -20,16 +20,8 @@ export default function Conversor() {
   };
 
   const calcular = () => {
-    interface Moneda {
-      CordobaADolar: number;
-      DolarACordoba: number;
-      PesoMexicanoACordoba: number;
-      CordobaAPesoMexicano: number;
-      DolarAPesoMexicano: number;
-      PesoMexicanoADolares: number;
-    }
 
-    const costoDeMoneda: Moneda = {
+    const costoDeMoneda = {
       CordobaADolar: 0.02757,
       DolarACordoba: 36,
       PesoMexicanoACordoba: 1.8,
@@ -44,6 +36,7 @@ export default function Conversor() {
         ...Form,
         resultados: 0,
       });
+
     } else {
       if (Form.nacional === "NIO" && Form.fareign === "USD") {
         const resultados = Form.Monto * costoDeMoneda.CordobaADolar;
@@ -52,6 +45,7 @@ export default function Conversor() {
           exchangeRate: `1 NIO = ${costoDeMoneda.CordobaADolar} USD`,
           resultados,
         });
+
       } else if (Form.nacional === "USD" && Form.fareign === "NIO") {
         const resultados = Form.Monto * costoDeMoneda.DolarACordoba;
         setForm({
@@ -59,6 +53,7 @@ export default function Conversor() {
           exchangeRate: `1 USD = ${costoDeMoneda.DolarACordoba} NIO`,
           resultados,
         });
+
       } else if (Form.nacional === "NIO" && Form.fareign === "MXN$") {
         const resultados = Form.Monto * costoDeMoneda.CordobaAPesoMexicano;
         setForm({
@@ -66,6 +61,7 @@ export default function Conversor() {
           exchangeRate: `1 NIO = ${costoDeMoneda.CordobaAPesoMexicano} MXN$`,
           resultados,
         });
+
       } else if (Form.nacional === "USD" && Form.fareign === "MXN$") {
         const resultados = Form.Monto * costoDeMoneda.DolarAPesoMexicano;
         setForm({
@@ -73,6 +69,7 @@ export default function Conversor() {
           exchangeRate: `1 USD = ${costoDeMoneda.DolarAPesoMexicano} MXN$`,
           resultados,
         });
+
       } else if (Form.nacional === "MXN$" && Form.fareign === "USD") {
         const resultados = Form.Monto * costoDeMoneda.PesoMexicanoADolares;
         setForm({
@@ -80,6 +77,7 @@ export default function Conversor() {
           exchangeRate: `1 MXN$ = ${costoDeMoneda.PesoMexicanoADolares} USD`,
           resultados,
         });
+
       } else if (Form.nacional === "MXN$" && Form.fareign === "NIO") {
         const resultados = Form.Monto * costoDeMoneda.PesoMexicanoACordoba;
         setForm({
@@ -93,13 +91,12 @@ export default function Conversor() {
 
   return (
     <View style={style.container}>
-      <Text style={style.title}> Conversiones que se pueden hacer</Text>
-      <Text style={style.text}> NIO  /  USD</Text>
-      <Text style={style.text}> USD  /  NIO</Text>
-      <Text style={style.text}> NIO  /  MXN$</Text>
-      <Text style={style.text}> USD  /  MXN$</Text>
-      <Text style={style.text}> MXN$  /  USD</Text>
-      <Text style={style.text}> MXN$  /  NIO</Text>
+      <Text style={style.text}> NIO ------------- USD</Text>
+      <Text style={style.text}> USD ------------- NIO</Text>
+      <Text style={style.text}> NIO ----------- MXN$</Text>
+      <Text style={style.text}> USD ----------- MXN$</Text>
+      <Text style={style.text}> MXN$ ----------- USD</Text>
+      <Text style={style.text}> MXN$ ----------- NIO</Text>
 
       <View>
         <Text style={style.text}> Moneda origen</Text>
